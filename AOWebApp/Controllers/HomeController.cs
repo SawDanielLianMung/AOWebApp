@@ -1,6 +1,7 @@
-using System.Diagnostics;
 using AOWebApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AOWebApp.Controllers
 {
@@ -15,8 +16,30 @@ namespace AOWebApp.Controllers
 
         public IActionResult Index()
         {
+            //throw new Exception("This is an error");
             return View();
         }
+
+        public IActionResult Test(int? id, string text)
+        {
+            // get the id from the Request url
+            //var id = Request.RouteValues["id"];
+
+            // pass the id value to the view
+            ViewBag.id = id;
+            ViewBag.searchText = text;
+
+            return View();
+        }
+        public IActionResult RazorTest(string name, int?id)
+        {
+            //throw new Exception("This is an error");
+
+            ViewBag.id = id;
+            ViewBag.name = name;
+            return View();
+        }
+
 
         public IActionResult Privacy()
         {

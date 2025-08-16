@@ -1,0 +1,62 @@
+﻿
+@{
+    var list = new int[] { 1, 3, 5, 7, 9 };
+    var num1 = 10;
+    var num2 = 20;
+    var Username = "Berry";
+    var isAvailable = true;
+    var itemName = "keyboard";
+    var isActive = true;
+
+    string[] list2 = { "gg", "ez", "wp", "ggez", "glhf" };
+
+    var coordinates = new
+    {
+        X = 10,
+        Y = 20
+    };
+}
+
+@Username
+<p>The item is @itemName</p>
+<p>The iten is currently @(isAvailable ? "available" : "unavailable")</p>
+
+<ul>
+    @foreach (var num in list)
+    {
+        <li>list item: @num</li>
+    }
+</ul>
+
+<p>@DateTime.Now</p>
+<p>@DateTime.IsLeapYear(2016)</p>
+
+
+@if (isActive)
+{
+    <p> The item is currently available</p>
+}
+else
+{
+    <p> The item is currently unavailable</p>
+}
+
+<p>Total sum = @((num1 + num2).ToString())</p>
+@foreach(var  i in list2)
+{
+    <p>loop words. @i</p>
+}
+
+<p>Your coordinate is at @coordinates.X, @coordinates.Y</p>
+
+<form method="post" asp-controller="Home" asp-action="RazorTest">
+    <label for="name">Item name: </label>
+    <input type ="text" name="name" />
+    <label for="id">ID:</label>
+    <input type="text" name="id"/>
+    <button type="submit">Save</button>
+
+</form>
+
+<p>ID: @ViewBag.id</p>
+<p>name: @ViewBag.name</p>
