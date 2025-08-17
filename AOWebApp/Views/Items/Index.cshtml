@@ -1,0 +1,34 @@
+﻿@model IEnumerable<AOWebApp.Models.Items>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="h2.bootstrap alert-heading text-center">Shop Items</h1>
+<br />
+<form method="post">
+    <div class="input-group mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-default">Item Search</span>
+        <input type="text" class="form-control" name="searchText" title="Search by item name. Max 100 chars."
+               maxlength="100" placeholder="Type here" aria-label="Item Search Input" />
+    </div>
+    <input type="submit" class="btn btn-outline-primary" value="Submit" />
+    <a asp-action="Index" class="btn btn-danger">Reset</a>
+
+</form>
+<br />
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <img src="@item.ItemImage" class="card-img-top" alt="@item.ItemName">
+                <h5 class="card-title">@item.ItemName</h5>
+                <p class="card-text">@(item.ItemDescription.Length > 100 ? @item.ItemDescription.Substring(0, 100).Trim() + "..." : item.ItemDescription)</p>
+                <p class="card-text">Cost: @item.ItemCost.ToString("C")</p>
+                <a asp-controller="Items" asp-action="Details" asp-route-id="@item.ItemId" class="btn btn-primary">View Item Details</a>
+            </div>
+        </div>
+
+    }
+</div>

@@ -14,10 +14,13 @@ namespace AOWebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int?itemID, string itemName)
         {
             //throw new Exception("This is an error");
-            return View();
+            ViewBag.itemID = itemID;
+            ViewBag.itemName = itemName;
+            var items = new List<Items>();
+            return View(items);
         }
 
         public IActionResult Test(int? id, string text)
