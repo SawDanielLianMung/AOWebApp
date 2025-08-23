@@ -31,4 +31,5 @@ public partial class AmazonOrdersContext : DbContext
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 
 public DbSet<AOWebApp.Models.Items> Items { get; set; } = default!;
+    public IEnumerable<object> ItemCategories { get; internal set; }
 }
