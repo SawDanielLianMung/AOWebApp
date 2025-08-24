@@ -38,16 +38,6 @@ namespace AOWebApp.Controllers
             }
             return await _context.Items.ToListAsync();
         }
-        // GET: api/ParentCategoriesAPI
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ItemCategories>>> GetItemCategories()
-        {
-            var categoryList = _context.ItemCategories
-                .Where(ic => ic.ParentCategoryId == null)
-                .OrderBy(ic => ic.CategoryName);
-
-            return await categoryList.ToListAsync();
-        }
 
         // GET: api/ItemsWebAPI/5
         [HttpGet("{id}")]

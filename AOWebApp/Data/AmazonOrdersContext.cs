@@ -7,6 +7,8 @@ namespace AOWebApp.Data;
 
 public partial class AmazonOrdersContext : DbContext
 {
+    internal IEnumerable<object> Addresses;
+
     public AmazonOrdersContext()
     {
     }
@@ -32,4 +34,6 @@ public partial class AmazonOrdersContext : DbContext
 
 public DbSet<AOWebApp.Models.Items> Items { get; set; } = default!;
     public IEnumerable<object> ItemCategories { get; internal set; }
+
+public DbSet<AOWebApp.Models.Customers> Customers { get; set; } = default!;
 }
